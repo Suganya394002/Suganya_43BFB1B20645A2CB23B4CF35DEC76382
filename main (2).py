@@ -1,45 +1,48 @@
-#2.1 Implement a class called BankAccount that represents a bank account.The class should have private attributes for account number, account holder name, and account balance. Include methods to deposit money, withdraw money, and display the account balance.Ensure that the account balance cannot be accessed directly from outside the class.Write a program to create an instance of the BankAccount class and test the deposit and withdrawal functionality.
-class BankAccount:
-    def __init__(self, account_number,  account_holder_name,initial_balance=0.0):
-      self.__account_number = account_number
-      self.__account_holder_name = account_holder_name
-      self.__account_balance = initial_balance
-    
-    def deposit(self,amount):
-        if amount > 0:
-            self.__account_balance += amount
-            print(f"Deposited ${amount:.2f}into account {self.__account_number}")
-        else:
-            print("Invalid deposit amount.Please deposit a positive amount.")
- 
-    def withdraw (self, amount):
-        if amount > 0:
-            if self.__account_balance >= amount: 
-               self.__account_balance -= amount
-               print(f"Withdrew ${amount:.2f} from account {self.__account_number}")
-            else:
-              print("Insufficient balance.Cannot withdraw.")
-        else:
-           print("Invalid withdrawal amount.Please withdraw a positive amount.")
+'''
+Implement a function called sort_students that takes a list of students objects as input and sorts the 
+list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object 
+has the following attributes: name (string), roll_number (string),and cgpa (float). Test the function 
+with different input lists of student.
+'''
 
-    def display_balance(self):
-          print(f"Account {self.__account_number}balance: ${self.__account_balance:.2f}")
-
-
-# Testing the BankAccount class
-if __name__ == "__main__":
-    # Create a BankAccount instance 
-    account1 = BankAccount ("123456", "John Doe", 1000.0)
-
-    # Deposit money
-    account1.deposit(500.0)
+class Student:
   
-    # Withdraw money
-    account1.withdraw(200.0)
+  def __init__(self,name, roll_number, cgpa):
+    self.name = name
+    self.roll_number = roll_number
+    self.cgpa = cgpa
 
-    # Display balance
-    account1.display_balance()
+
+def sort_students(student_list):
+  # Sort the list of students in descending order of CGPA
+  sorted_students = sorted(student_list,
+                   key=lambda student: student.cgpa,
+                   reverse=True)
+  # Syntax - lambda arg:exp
+  return sorted_students
+  
+
+# Example Usage:
+students = [
+    Student("Hari", "A123", 7.8),
+    Student("Srikanth", "A124",8.9),
+    Student("Saumya", "A125", 9.1),
+    Student("Mahidhar", "A126",9.9),
+]
+
+sorted_students= sort_students(students)
+
+# Print the sorted list of students 
+for student in sorted_students:
+  print("Name: {}, Roll number: {}, CGPA: {}".format(student.name,
+                                    student.roll_number,
+                        student.cgpa))
+                                    
 
 
-                       
+
     
+                             
+                             
+    
+  
